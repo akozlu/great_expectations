@@ -17,7 +17,7 @@ datasources:
     credentials: ${my_postgres_db}
     data_asset_type:
       class_name: SqlAlchemyDataset
-    generators:
+    batch_kwarg_generators:
       default:
         class_name: TableBatchKwargsGenerator
 

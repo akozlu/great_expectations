@@ -149,7 +149,7 @@ A batch of data is required to edit the suite - let's help you to specify it."""
             ) = get_batch_kwargs(
                 context,
                 datasource_name=data_source.name,
-                generator_name=None,
+                batch_kwarg_generator_name=None,
                 generator_asset=None,
                 additional_batch_kwargs=additional_batch_kwargs,
             )
@@ -220,7 +220,7 @@ def suite_new(suite, directory, empty, jupyter, view, batch_kwargs):
         success, suite_name = create_expectation_suite_impl(
             context,
             datasource_name=datasource_name,
-            generator_name=generator_name,
+            batch_kwarg_generator_name=generator_name,
             generator_asset=generator_asset,
             batch_kwargs=batch_kwargs,
             expectation_suite_name=suite,

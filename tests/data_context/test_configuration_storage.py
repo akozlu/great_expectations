@@ -42,7 +42,7 @@ def test_preserve_comments_in_yml_after_adding_datasource(data_context):
         "test_datasource",
         module_name="great_expectations.datasource",
         class_name="PandasDatasource",
-        generators={
+        batch_kwarg_generators={
     "subdir_reader": {
         "class_name": "SubdirReaderBatchKwargsGenerator",
         "base_directory": "../data",
@@ -63,7 +63,7 @@ datasources:
     class_name: PandasDatasource
     data_asset_type:
       class_name: PandasDataset
-    generators:
+    batch_kwarg_generators:
       # The name default is read if no datasource or generator is specified
       mygenerator:
         class_name: SubdirReaderBatchKwargsGenerator
@@ -76,7 +76,7 @@ datasources:
     class_name: PandasDatasource
     data_asset_type:
       class_name: PandasDataset
-    generators:
+    batch_kwarg_generators:
       default:
         class_name: SubdirReaderBatchKwargsGenerator
         base_directory: ../data

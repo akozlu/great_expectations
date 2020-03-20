@@ -67,7 +67,7 @@ def _add_datasource_and_credentials_to_context(context, datasource_name, sqlite_
         class_name="SqlAlchemyDatasource",
         data_asset_type={"class_name": "SqlAlchemyDataset"},
         credentials="${" + datasource_name + "}",
-        generators={"default": {"class_name": "TableBatchKwargsGenerator"}},
+        batch_kwarg_generators={"default": {"class_name": "TableBatchKwargsGenerator"}},
     )
 
     expected_datasources = original_datasources
@@ -91,7 +91,7 @@ def _add_datasource__with_two_generators_and_credentials_to_context(context, dat
         class_name="SqlAlchemyDatasource",
         data_asset_type={"class_name": "SqlAlchemyDataset"},
         credentials="${" + datasource_name + "}",
-        generators={"default": {"class_name": "TableBatchKwargsGenerator"},
+        batch_kwarg_generators={"default": {"class_name": "TableBatchKwargsGenerator"},
                     "second_generator": {
                         "class_name": "ManualBatchKwargsGenerator",
                         "assets": {
@@ -304,7 +304,7 @@ def test_cli_datasource_profile_with_datasource_arg_and_generator_name_arg(
             "datasource",
             "profile",
             datasource_name,
-            "--generator-name",
+            "--batch-kwarg-generator-name",
             second_generator_name,
             "-d",
             project_root_dir,

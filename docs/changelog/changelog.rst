@@ -4,6 +4,9 @@ develop
 -----------------
 * Remove the "project new" option from the command line (since it is not implemented; users can only run "init" to create a new project).
 
+**Breaking**
+
+* Renamed all ``generator`` parameters and methods to the more correct ``batch_kwarg_generator`` language
 
 0.9.7
 -----------------

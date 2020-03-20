@@ -68,7 +68,7 @@ def test_get_available_data_asset_names_with_one_datasource_including_a_single_g
     empty_data_context.add_datasource("my_datasource",
                            module_name="great_expectations.datasource",
                            class_name="PandasDatasource",
-                           generators={
+                           batch_kwarg_generators={
                              "subdir_reader": {
                                  "class_name": "SubdirReaderBatchKwargsGenerator",
                                  "base_directory": str(filesystem_csv)
@@ -104,7 +104,7 @@ def test_get_available_data_asset_names_with_multiple_datasources_with_and_witho
     context.add_datasource(
         "first",
         class_name="SqlAlchemyDatasource",
-        generators={"foo": {"class_name": "TableBatchKwargsGenerator", }},
+        batch_kwarg_generators={"foo": {"class_name": "TableBatchKwargsGenerator", }},
         **connection_kwargs
     )
     context.add_datasource(
@@ -115,7 +115,7 @@ def test_get_available_data_asset_names_with_multiple_datasources_with_and_witho
     context.add_datasource(
         "third",
         class_name="SqlAlchemyDatasource",
-        generators={"bar": {"class_name": "TableBatchKwargsGenerator", }},
+        batch_kwarg_generators={"bar": {"class_name": "TableBatchKwargsGenerator", }},
         **connection_kwargs
     )
 
@@ -279,7 +279,7 @@ project_path/
     context.add_datasource("titanic",
                            module_name="great_expectations.datasource",
                            class_name="PandasDatasource",
-                           generators={
+                           batch_kwarg_generators={
                              "subdir_reader": {
                                  "class_name": "SubdirReaderBatchKwargsGenerator",
                                  "base_directory": os.path.join(project_dir, "data/titanic/")
@@ -290,7 +290,7 @@ project_path/
     context.add_datasource("random",
                            module_name="great_expectations.datasource",
                            class_name="PandasDatasource",
-                           generators={
+                           batch_kwarg_generators={
                                "subdir_reader": {
                                    "class_name": "SubdirReaderBatchKwargsGenerator",
                                    "base_directory": os.path.join(project_dir, "data/random/")

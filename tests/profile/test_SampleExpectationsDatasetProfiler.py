@@ -19,7 +19,7 @@ def not_empty_datacontext(empty_data_context, filesystem_csv_2):
         "rad_datasource",
         module_name="great_expectations.datasource",
         class_name="PandasDatasource",
-        generators={
+        batch_kwarg_generators={
             "subdir_reader": {
                 "class_name": "SubdirReaderBatchKwargsGenerator",
                 "base_directory": str(filesystem_csv_2),
@@ -319,7 +319,7 @@ def test_SampleExpectationsDatasetProfiler_with_context(not_empty_datacontext):
 
     context.create_expectation_suite("default")
     datasource = context.datasources["rad_datasource"]
-    base_dir = datasource.config["generators"]["subdir_reader"]["base_directory"]
+    base_dir = datasource.config["batch_kwarg_generators"]["subdir_reader"]["base_directory"]
     batch_kwargs = {
         "datasource": "rad_datasource",
         "path": os.path.join(base_dir, "f1.csv"),

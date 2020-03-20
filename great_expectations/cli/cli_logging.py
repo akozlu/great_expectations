@@ -4,7 +4,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 logging.getLogger(
-    "great_expectations.datasource.generator.in_memory_generator"
+    "great_expectations.datasource.batch_kwarg_generator.in_memory_batch_kwarg_generator"
 ).setLevel(logging.CRITICAL)
 logging.getLogger(
     "great_expectations.dataset.sqlalchemy_dataset"

@@ -86,14 +86,14 @@ class DataContextConfig(DictDot):
 
 
 class DatasourceConfig(DictDot):
-    def __init__(self, class_name, module_name=None, data_asset_type=None, generators=None, credentials=None,
+    def __init__(self, class_name, module_name=None, data_asset_type=None, batch_kwarg_generators=None, credentials=None,
                  reader_method=None, limit=None, **kwargs):
         # NOTE - JPC - 20200316: Currently, we are mostly inconsistent with respect to this type...
         self._class_name = class_name
         self._module_name = module_name
         self.data_asset_type = data_asset_type
-        if generators is not None:
-            self.generators = generators
+        if batch_kwarg_generators is not None:
+            self.batch_kwarg_generators = batch_kwarg_generators
         if credentials is not None:
             self.credentials = credentials
         if reader_method is not None:
@@ -120,8 +120,8 @@ class DatasourceConfigSchema(Schema):
     module_name = fields.String(allow_none=True)
     data_asset_type = fields.Nested(ClassConfigSchema)
     # TODO: Update to generator-specific
-    # generators = fields.Mapping(keys=fields.Str(), values=fields.Nested(fields.GeneratorSchema))
-    generators = fields.Dict(keys=fields.Str(), values=fields.Dict(), allow_none=True)
+    # batch_kwarg_generators = fields.Mapping(keys=fields.Str(), values=fields.Nested(fields.GeneratorSchema))
+    batch_kwarg_generators = fields.Dict(keys=fields.Str(), values=fields.Dict(), allow_none=True)
     credentials = fields.Raw(allow_none=True)
 
     # noinspection PyUnusedLocal
