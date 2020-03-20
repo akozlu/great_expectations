@@ -3,8 +3,6 @@ import pytest
 import os
 import logging
 
-from six import PY2
-
 logger = logging.getLogger(__name__)
 
 
@@ -15,9 +13,6 @@ def read_config_file_from_disk(config_filepath):
 
 
 def test_preserve_comments_in_yml_after_adding_datasource(data_context):
-    if PY2:
-        pytest.skip()
-
     ### THIS TEST FAILING IS A KNOWN ISSUE.
     ### A TICKET IS OPEN
 

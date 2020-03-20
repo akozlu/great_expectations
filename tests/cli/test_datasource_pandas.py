@@ -2,9 +2,7 @@ from __future__ import unicode_literals
 
 import os
 
-import pytest
 from click.testing import CliRunner
-from six import PY2
 
 from great_expectations import DataContext
 from great_expectations.cli import cli

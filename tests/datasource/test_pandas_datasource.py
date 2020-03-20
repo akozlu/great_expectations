@@ -6,7 +6,6 @@ import os
 from ruamel.yaml import YAML
 
 import pandas as pd
-from six import PY2, PY3
 import shutil
 
 from great_expectations.core.batch import Batch

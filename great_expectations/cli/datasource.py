@@ -39,12 +39,6 @@ from great_expectations.validator.validator import Validator
 
 logger = logging.getLogger(__name__)
 
-# FIXME: This prevents us from seeing a huge stack of these messages in python 2. We'll need to fix that later.
-# tests/test_cli.py::test_cli_profile_with_datasource_arg
-#   /Users/abe/Documents/superconductive/tools/great_expectations/tests/test_cli.py:294: Warning: Click detected the use of the unicode_literals __future__ import.  This is heavily discouraged because it can introduce subtle bugs in your code.  You should instead use explicit u"" literals for your unicode strings.  For more information see https://click.palletsprojects.com/python3/
-#     cli, ["profile", "my_datasource", "-d", project_root_dir])
-click.disable_unicode_literals_warning = True
-
 
 class DatasourceTypes(enum.Enum):
     PANDAS = "pandas"
@@ -320,12 +314,6 @@ def load_library(library_name, install_instructions_string=None):
             are different from 'pip install library_name'
     :return: True if the library was loaded successfully, False otherwise
     """
-    # TODO remove this nasty python 2 hack
-    try:
-        ModuleNotFoundError
-    except NameError:
-        ModuleNotFoundError = ImportError
-
     try:
         loaded_module = importlib.import_module(library_name)
         return True
@@ -345,12 +333,6 @@ def _add_sqlalchemy_datasource(context, prompt_for_datasource_name=True):
 
     if not load_library("sqlalchemy"):
         return None
-
-    # TODO remove this nasty python 2 hack
-    try:
-        ModuleNotFoundError
-    except NameError:
-        ModuleNotFoundError = ImportError
 
     db_choices = [str(x) for x in list(range(1, 1 + len(SupportedDatabases)))]
     selected_database = int(

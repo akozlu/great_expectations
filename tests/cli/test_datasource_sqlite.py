@@ -2,9 +2,7 @@ from __future__ import unicode_literals
 
 import os
 
-import pytest
 from click.testing import CliRunner
-from six import PY2
 
 from great_expectations import DataContext
 from great_expectations.cli import cli
@@ -39,18 +37,10 @@ def test_cli_datasorce_list(empty_data_context, empty_sqlite_db, caplog):
         cli, ["datasource", "list", "-d", project_root_dir], catch_exceptions=False
     )
     stdout = result.output.strip()
-    if PY2:
-        # deal with legacy python dictionary sorting
-        assert (
-            "'name': 'wow_a_datasource'"
-            and "'class_name': u'SqlAlchemyDatasource'" in stdout
-        )
-        assert len(stdout) >= 60 and len(stdout) <= 75
-    else:
-        assert (
-            "[{'name': 'wow_a_datasource', 'class_name': 'SqlAlchemyDatasource'}]"
-            in stdout
-        )
+    assert (
+        "[{'name': 'wow_a_datasource', 'class_name': 'SqlAlchemyDatasource'}]"
+        in stdout
+    )
 
     assert_no_logging_messages_or_tracebacks(caplog, result)
 
@@ -333,7 +323,6 @@ def test_cli_datasource_profile_with_datasource_arg_and_generator_name_arg(
     assert_no_tracebacks(result)
 
 
-@pytest.mark.xfail(condition=PY2, reason="a known issue on Py2")
 def test_cli_datasource_profile_with_no_datasource_args(
     empty_data_context, titanic_sqlite_db, caplog
 ):

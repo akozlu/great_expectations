@@ -1,16 +1,10 @@
 # TODO: ADD TESTS ONCE GET_BATCH IS INTEGRATED!
 
-import pytest
-
-from six import PY2
-
 from freezegun import freeze_time
 import pandas as pd
 
 import great_expectations as ge
-from great_expectations.data_context.types.base import DataContextConfig
 from great_expectations.validation_operators.validation_operators import (
-    ActionListValidationOperator,
     WarningAndFailureExpectationSuitesValidationOperator
 )
 

@@ -1,7 +1,6 @@
 import json
 
 import pytest
-from six import PY2
 
 from great_expectations.core import ExpectationSuiteSchema
 from great_expectations.render.renderer.notebook_renderer import NotebookRenderer

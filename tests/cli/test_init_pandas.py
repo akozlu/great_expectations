@@ -10,7 +10,6 @@ except ImportError:
 
 import pytest
 from click.testing import CliRunner
-from six import PY2
 
 from great_expectations import DataContext
 from great_expectations.cli import cli
@@ -20,7 +19,6 @@ from tests.cli.test_cli import yaml
 from tests.cli.utils import assert_no_logging_messages_or_tracebacks
 
 
-@pytest.mark.xfail(condition=PY2, reason="Py2")
 @mock.patch("webbrowser.open", return_value=True, side_effect=None)
 def test_cli_init_on_new_project(mock_webbrowser, caplog, tmp_path_factory):
     project_dir = str(tmp_path_factory.mktemp("test_cli_init_diff"))
@@ -382,7 +380,6 @@ def test_init_on_existing_project_with_datasource_with_no_suite_create_one(
     assert_no_logging_messages_or_tracebacks(caplog, result)
 
 
-@pytest.mark.xfail(condition=PY2, reason="Py2")
 def test_cli_init_on_new_project_with_broken_excel_file_without_trying_again(caplog, tmp_path_factory):
     project_dir = str(tmp_path_factory.mktemp("test_cli_init_diff"))
     os.makedirs(os.path.join(project_dir, "data"))
@@ -423,7 +420,6 @@ def test_cli_init_on_new_project_with_broken_excel_file_without_trying_again(cap
     assert_no_logging_messages_or_tracebacks(caplog, result)
 
 
-@pytest.mark.xfail(condition=PY2, reason="Py2")
 @mock.patch("webbrowser.open", return_value=True, side_effect=None)
 def test_cli_init_on_new_project_with_broken_excel_file_try_again_with_different_file(mock_webbrowser, caplog, tmp_path_factory):
     project_dir = str(tmp_path_factory.mktemp("test_cli_init_diff"))

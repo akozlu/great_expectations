@@ -18,10 +18,7 @@ from great_expectations.cli.util import cli_message, load_expectation_suite
 from great_expectations.data_asset import DataAsset
 from great_expectations.render.renderer.notebook_renderer import NotebookRenderer
 
-try:
-    json_parse_exception = json.decoder.JSONDecodeError
-except AttributeError:  # Python 2
-    json_parse_exception = ValueError
+json_parse_exception = json.decoder.JSONDecodeError
 
 try:
     from sqlalchemy.exc import SQLAlchemyError

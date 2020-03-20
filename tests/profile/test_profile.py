@@ -3,7 +3,6 @@ import os
 from collections import OrderedDict
 
 import pytest
-from six import PY2
 
 import great_expectations as ge
 from great_expectations.data_context.util import file_relative_path
