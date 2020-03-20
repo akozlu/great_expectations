@@ -49,9 +49,7 @@ def test_cli_datasorce_list(caplog, empty_data_context, filesystem_csv_2):
     )
 
     stdout = result.output.strip()
-    assert (
-        "[{'name': 'wow_a_datasource', 'class_name': 'PandasDatasource'}]" in stdout
-    )
+    assert "[{'name': 'wow_a_datasource', 'class_name': 'PandasDatasource'}]" in stdout
     assert_no_logging_messages_or_tracebacks(caplog, result)
 
 

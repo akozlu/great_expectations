@@ -38,8 +38,7 @@ def test_cli_datasorce_list(empty_data_context, empty_sqlite_db, caplog):
     )
     stdout = result.output.strip()
     assert (
-        "[{'name': 'wow_a_datasource', 'class_name': 'SqlAlchemyDatasource'}]"
-        in stdout
+        "[{'name': 'wow_a_datasource', 'class_name': 'SqlAlchemyDatasource'}]" in stdout
     )
 
     assert_no_logging_messages_or_tracebacks(caplog, result)
@@ -69,7 +68,9 @@ def _add_datasource_and_credentials_to_context(context, datasource_name, sqlite_
     return context
 
 
-def _add_datasource__with_two_generators_and_credentials_to_context(context, datasource_name, sqlite_engine):
+def _add_datasource__with_two_generators_and_credentials_to_context(
+    context, datasource_name, sqlite_engine
+):
     original_datasources = context.list_datasources()
 
     credentials = {"url": str(sqlite_engine.url)}
@@ -81,18 +82,17 @@ def _add_datasource__with_two_generators_and_credentials_to_context(context, dat
         class_name="SqlAlchemyDatasource",
         data_asset_type={"class_name": "SqlAlchemyDataset"},
         credentials="${" + datasource_name + "}",
-        batch_kwarg_generators={"default": {"class_name": "TableBatchKwargsGenerator"},
-                    "second_generator": {
-                        "class_name": "ManualBatchKwargsGenerator",
-                        "assets": {
-                            "asset_one": [
-                                {
-                                    "partition_id": 1,
-                                    "query": "select * from main.titanic"
-                                }
-                            ]
-                        }
-                    }},
+        batch_kwarg_generators={
+            "default": {"class_name": "TableBatchKwargsGenerator"},
+            "second_generator": {
+                "class_name": "ManualBatchKwargsGenerator",
+                "assets": {
+                    "asset_one": [
+                        {"partition_id": 1, "query": "select * from main.titanic"}
+                    ]
+                },
+            },
+        },
     )
 
     expected_datasources = original_datasources
@@ -102,6 +102,7 @@ def _add_datasource__with_two_generators_and_credentials_to_context(context, dat
 
     assert context.list_datasources() == expected_datasources
     return context
+
 
 def test_cli_datasorce_new_connection_string(
     empty_data_context, empty_sqlite_db, caplog
