@@ -11,7 +11,7 @@ from great_expectations.cli.datasource import (
 )
 from great_expectations.cli.util import cli_message, load_expectation_suite
 from great_expectations.data_context.util import file_relative_path
-from great_expectations.util import lint_code
+# from great_expectations.util import lint_code
 
 
 @click.group()
@@ -88,8 +88,8 @@ def _write_tap_file_to_disk(batch_kwargs, context_directory, suite, tap_filename
     template = _load_template().format(
         tap_filename, context_directory, suite.expectation_suite_name, batch_kwargs
     )
-    linted_code = lint_code(template)
+    # linted_code = lint_code(template)
     with open(tap_file_path, "w") as f:
-        f.write(linted_code)
+        f.write(template)
 
     return tap_file_path
