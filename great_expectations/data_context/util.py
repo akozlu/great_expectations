@@ -167,7 +167,7 @@ def substitute_config_variable(template_str, config_variables_dict):
                 return template_str[:match.start()] + config_variable_value + template_str[match.end():]
 
         raise MissingConfigVariableError(
-                    f"""\n\nUnable to find a match for config substitution variable: `{match.group(1)}`.
+                    """\n\nUnable to find a match for config substitution variable: `{match.group(1)}`.
 Please add this missing variable to your `uncommitted/config_variables.yml` file or your environment variables.
 See https://great-expectations.readthedocs.io/en/latest/reference/data_context_reference.html#managing-environment-and-secrets""",
                     missing_config_variable=match.group(1)

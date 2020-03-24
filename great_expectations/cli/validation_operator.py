@@ -104,7 +104,7 @@ def validation_operator_run(name, run_id, validation_config_file, suite, directo
             IOError,
             json_parse_exception
         ) as e:
-            cli_message(f"Failed to process the --validation_config_file argument: <red>{e}</red>")
+            cli_message("Failed to process the --validation_config_file argument: <red>{e}</red>")
             sys.exit(1)
 
         validation_config_error_message = _validate_valdiation_config(validation_config)
@@ -135,7 +135,7 @@ Call `great_expectation validation-operator list` command to list the operators 
         else:
             if name not in context.list_validation_operator_names():
                 cli_message(
-                    f"""
+                    """
 Could not find a validation operator {name}.
 Call `great_expectation validation-operator list` command to list the operators in your project.
 """

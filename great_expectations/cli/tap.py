@@ -44,7 +44,7 @@ def tap_new(suite, tap_filename, directory, datasource=None):
         batch_kwargs, context_directory, suite, tap_filename
     )
     cli_message(
-        f"""\
+        """\
 <green>A new tap has been generated!</green>
 To run this tap, run: <green>python {tap_filename}</green>
 You can edit this script or place this code snippet in your pipeline."""

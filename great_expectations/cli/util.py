@@ -55,7 +55,7 @@ def load_expectation_suite(context, suite_name):
         return suite
     except ge_exceptions.DataContextError as e:
         cli_message(
-            f"<red>Could not find a suite named `{suite_name}`.</red> Please check "
+            "<red>Could not find a suite named `{suite_name}`.</red> Please check "
             "the name by running `great_expectations suite list` and try again."
         )
         logger.info(e)

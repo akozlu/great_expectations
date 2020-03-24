@@ -163,7 +163,7 @@ A batch of data is required to edit the suite - let's help you to specify it."""
 
     if not jupyter:
         cli_message("To continue editing this suite, run <green>jupyter "
-                    f"notebook {notebook_path}</green>")
+                    "notebook {notebook_path}</green>")
 
     if jupyter:
         subprocess.call(["jupyter", "notebook", notebook_path])
